@@ -22,7 +22,6 @@ export default {
         };
         this.$emit("add-todo", newTask);
         this.task = ""
-        console.log(newTask);
       }
     }
   }

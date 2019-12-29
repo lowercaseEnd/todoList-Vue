@@ -1,6 +1,10 @@
 <template>
   <ul class="list-todo">
-    <ListItem />
+    <ListItem 
+      v-for="todo in todos"
+      v-bind:key="todo.id"
+      v-bind:todo="todo"
+    />
   </ul>
 </template>
 
@@ -8,6 +12,7 @@
 import ListItem from "@/components/ListItem"
 
 export default {
+  props: ["todos"],
   components: {
     ListItem
   }
@@ -17,5 +22,7 @@ export default {
 <style scoped>
   .list-todo {
     list-style: none;
+    margin: 0;
+    padding: 0;
   }
 </style>

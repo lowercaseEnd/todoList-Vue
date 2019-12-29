@@ -1,10 +1,12 @@
 <template>
   <div id="app">
     <AddTodo
-      
+      v-on:add-todo="addTodo"
      />
     <hr>
-    <ListTodo />
+    <ListTodo 
+      v-bind:todos="todos"
+    />
   </div>
 </template>
 
@@ -22,6 +24,11 @@ export default {
   components: {
     ListTodo,
     AddTodo    
+  },
+  methods: {
+    addTodo(task) {
+      this.todos.push(task);
+    }
   }
 }
 </script>
@@ -31,8 +38,10 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /* text-align: center; */
   color: #2c3e50;
+  width: 600px;
+  margin: 0 auto;
   margin-top: 60px;
 }
 </style>
