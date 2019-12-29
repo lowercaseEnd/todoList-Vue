@@ -1,9 +1,10 @@
 <template>
   <li class="list-todo__item">
-    <span v-bind:class="{done: todo.completed}">
+    <p>
     <input type="checkbox" class="list-todo__complete" v-on:change="todo.completed = !todo.completed">
-    {{todo.task | uppercase}}
-    </span>
+    {{currentIndex()}}
+    <span  v-bind:class="{done: todo.completed}">{{todo.task | uppercase}}</span>
+    </p>
     <button type="button" class="list-todo__delete" v-on:click="deleteTask">&times;</button>
   </li>
 </template>
@@ -14,11 +15,15 @@ export default {
     todo: {
       type: Object,
       required: true
-    }
+    },
+    index: Number
   },
   methods: {
     deleteTask() {
       this.$emit("deleteTask", this.todo.id);
+    },
+    currentIndex() {
+      return this.index + 1;
     }
   },
   filters: {

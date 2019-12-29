@@ -3,9 +3,14 @@
     <AddTodo
       v-on:add-todo="addTodo"
      />
+     <select v-model="filter" class="filter-todos">
+       <option value="all">All</option>
+       <option value="completed">Completed</option>
+       <option value="not-completed">Not completed</option>
+     </select>
     <hr>
     <ListTodo 
-      v-bind:todos="todos"
+      v-bind:todos="filteredTodos"
       v-on:deleteTask="deleteTask"
     />
   </div>
@@ -19,7 +24,8 @@ export default {
   name: 'app',
   data() {
     return {
-      todos: []
+      todos: [],
+      filter: "all"
     }
   },
   components: {
@@ -32,6 +38,19 @@ export default {
     },
     deleteTask(id) {
       this.todos = this.todos.filter(element => element.id !== id);
+    }
+  },
+  computed: {
+    filteredTodos() {
+      if (this.filter === "all") {
+        return this.todos;
+      }
+      if (this.filter === "completed") {
+        return this.todos.filter(element => element.completed);
+      }
+      if (this.filter === "not-completed") {
+        return this.todos.filter(element => !element.completed);
+      }
     }
   }
 }
@@ -47,5 +66,9 @@ export default {
   width: 600px;
   margin: 0 auto;
   margin-top: 60px;
+}
+.filter-todos {
+  display: block;
+  margin: 0 auto;
 }
 </style>
