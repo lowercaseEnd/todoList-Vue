@@ -1,16 +1,27 @@
 <template>
   <div id="app">
+    <AddTodo
+      
+     />
+    <hr>
     <ListTodo />
   </div>
 </template>
 
 <script>
 import ListTodo from "@/components/ListTodo";
+import AddTodo from "@/components/AddTodo";
 
 export default {
   name: 'app',
+  data() {
+    return {
+      todos: []
+    }
+  },
   components: {
-    ListTodo    
+    ListTodo,
+    AddTodo    
   }
 }
 </script>

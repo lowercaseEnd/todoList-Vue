@@ -1,7 +1,21 @@
 <template>
   <ul class="list-todo">
-    <li class="list-todo__item">3</li>
-    <li class="list-todo__item">2</li>
-    <li class="list-todo__item">1</li>
+    <ListItem />
   </ul>
 </template>
+
+<script>
+import ListItem from "@/components/ListItem"
+
+export default {
+  components: {
+    ListItem
+  }
+}
+</script>
+
+<style scoped>
+  .list-todo {
+    list-style: none;
+  }
+</style>
