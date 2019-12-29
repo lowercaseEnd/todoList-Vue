@@ -1,10 +1,10 @@
 <template>
   <li class="list-todo__item">
-    <span>
-    <input type="checkbox" class="list-todo__complete">
-    {{todo.task}}
+    <span v-bind:class="{done: todo.completed}">
+    <input type="checkbox" class="list-todo__complete" v-on:change="todo.completed = !todo.completed">
+    {{todo.task | uppercase}}
     </span>
-    <button type="button" class="list-todo__delete" v-on:click="$emit('deleteTask', todo.id)">&times;</button>
+    <button type="button" class="list-todo__delete" v-on:click="deleteTask">&times;</button>
   </li>
 </template>
 
@@ -14,6 +14,16 @@ export default {
     todo: {
       type: Object,
       required: true
+    }
+  },
+  methods: {
+    deleteTask() {
+      this.$emit("deleteTask", this.todo.id);
+    }
+  },
+  filters: {
+    uppercase(value) {
+      return value.toUpperCase();
     }
   }
 }
@@ -44,7 +54,6 @@ export default {
     margin-left: 15px;
     
   }
-
   .done {
     text-decoration: line-through;
   }

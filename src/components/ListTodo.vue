@@ -4,7 +4,7 @@
       v-for="todo in todos"
       v-bind:key="todo.id"
       v-bind:todo="todo"
-      v-on:deleteTask="$emit('deleteTask', todo.id)"
+      v-on:deleteTask="deleteTask"
     />
   </ul>
 </template>
@@ -16,6 +16,11 @@ export default {
   props: ["todos"],
   components: {
     ListItem
+  },
+  methods: {
+    deleteTask(id) {
+      this.$emit("deleteTask", id);
+    }
   }
 }
 </script>
