@@ -6,6 +6,7 @@
     <hr>
     <ListTodo 
       v-bind:todos="todos"
+      v-on:deleteTask="deleteTask"
     />
   </div>
 </template>
@@ -28,6 +29,9 @@ export default {
   methods: {
     addTodo(task) {
       this.todos.push(task);
+    },
+    deleteTask(id) {
+      this.todos = this.todos.filter(element => element.id !== id);
     }
   }
 }

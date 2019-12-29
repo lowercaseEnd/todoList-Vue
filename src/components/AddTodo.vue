@@ -30,7 +30,7 @@ export default {
 
 <style scoped>
   .input-task {
-    width: 400px;
+    width: 490px;
     /* margin: 0 auto; */
   }
   .add-task {

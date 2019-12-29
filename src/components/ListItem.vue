@@ -4,7 +4,7 @@
     <input type="checkbox" class="list-todo__complete">
     {{todo.task}}
     </span>
-    <button type="button" class="list-todo__delete">&times;</button>
+    <button type="button" class="list-todo__delete" v-on:click="$emit('deleteTask', todo.id)">&times;</button>
   </li>
 </template>
 
@@ -43,5 +43,9 @@ export default {
   .list-todo__complete {
     margin-left: 15px;
     
+  }
+
+  .done {
+    text-decoration: line-through;
   }
 </style>
