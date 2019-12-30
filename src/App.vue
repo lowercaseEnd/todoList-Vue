@@ -1,18 +1,8 @@
 <template>
   <div id="app">
-    <AddTodo
-      v-on:add-todo="addTodo"
-     />
-     <select v-model="filter" class="filter-todos">
-       <option value="all">All</option>
-       <option value="completed">Completed</option>
-       <option value="not-completed">Not completed</option>
-     </select>
+    <h1 class="main-title">Todo app</h1>
     <hr>
-    <ListTodo 
-      v-bind:todos="filteredTodos"
-      v-on:deleteTask="deleteTask"
-    />
+    <router-view />
   </div>
 </template>
 
@@ -25,7 +15,6 @@ export default {
   data() {
     return {
       todos: [],
-      filter: "all"
     }
   },
   components: {
@@ -38,19 +27,6 @@ export default {
     },
     deleteTask(id) {
       this.todos = this.todos.filter(element => element.id !== id);
-    }
-  },
-  computed: {
-    filteredTodos() {
-      if (this.filter === "all") {
-        return this.todos;
-      }
-      if (this.filter === "completed") {
-        return this.todos.filter(element => element.completed);
-      }
-      if (this.filter === "not-completed") {
-        return this.todos.filter(element => !element.completed);
-      }
     }
   }
 }
@@ -70,5 +46,8 @@ export default {
 .filter-todos {
   display: block;
   margin: 0 auto;
+}
+.main-title {
+  text-align: center;
 }
 </style>
