@@ -1,8 +1,8 @@
 <template>
   <li class="list-todo__item">
     <p>
+    <span class="index">{{currentIndex()}} </span>
     <input type="checkbox" class="list-todo__complete" v-on:change="todo.completed = !todo.completed">
-    {{currentIndex()}}
     <span  v-bind:class="{done: todo.completed}">{{todo.task | uppercase}}</span>
     </p>
     <button type="button" class="list-todo__delete" v-on:click="deleteTask">&times;</button>
@@ -56,8 +56,11 @@ export default {
     margin-right: 15px;
   }
   .list-todo__complete {
-    margin-left: 15px;
+    margin-right: 15px;
     
+  }
+  .index {
+    margin-left: 5px;
   }
   .done {
     text-decoration: line-through;
